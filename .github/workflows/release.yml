@@ -1,0 +1,11 @@
+# Fix fakeProfile modal imports
+sed -i '' 's/^import { ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalRoot, openModal } from "@utils\/modal";/import { ModalCloseButton as _ModalCloseButton, ModalContent as _ModalContent, ModalFooter as _ModalFooter, ModalHeader as _ModalHeader, ModalRoot as _ModalRoot, openModal } from "@utils\/modal";\nconst ModalRoot = _ModalRoot as any;\nconst ModalHeader = _ModalHeader as any;\nconst ModalContent = _ModalContent as any;\nconst ModalFooter = _ModalFooter as any;\nconst ModalCloseButton = _ModalCloseButton as any;/' src/sincordplugins/fakeProfile/index.tsx
+
+# Add the workflow file
+git add .github/workflows/release.yml src/sincordplugins/fakeProfile/index.tsx
+git commit -m "add installer release workflow, fix modal types"
+git push origin main
+
+# Tag to trigger it
+git tag v1.0.2
+git push origin v1.0.2

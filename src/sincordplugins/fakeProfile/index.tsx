@@ -10,7 +10,13 @@ import { ProfileBadge } from "@api/Badges";
 import { addContextMenuPatch, NavContextMenuPatchCallback, removeContextMenuPatch } from "@api/ContextMenu";
 import { addHeaderBarButton, HeaderBarButton, removeHeaderBarButton } from "@api/HeaderBar";
 import { DataStore } from "@api/index";
-import { ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalRoot, openModal } from "@utils/modal";
+import { ModalCloseButton as _ModalCloseButton, ModalContent as _ModalContent, ModalFooter as _ModalFooter, ModalHeader as _ModalHeader, ModalRoot as _ModalRoot, openModal } from "@utils/modal";
+
+const ModalRoot = _ModalRoot as any;
+const ModalHeader = _ModalHeader as any;
+const ModalContent = _ModalContent as any;
+const ModalFooter = _ModalFooter as any;
+const ModalCloseButton = _ModalCloseButton as any;
 import { SincordDevs } from "@utils/constants";
 import definePlugin from "@utils/types";
 import { AuthenticationStore, Button, FluxDispatcher, IconUtils, Menu, React, Select, SnowflakeUtils, UserStore } from "@webpack/common";

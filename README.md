@@ -1,12 +1,7 @@
 # [<img src="./browser/icon.png" width="40" align="left" alt="Sincord">](https://github.com/Sincord/Sincord) Sincord
 
-[![Sinbop](https://img.shields.io/badge/Sinbop-grey?style=flat)](https://github.com/Sincord/Sinbop)
-[![Tests](https://github.com/Sincord/Sincord/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/Sincord/Sincord/actions/workflows/test.yml)
-[![Discord](https://img.shields.io/discord/1173279886065029291.svg?color=768AD4&label=Discord&logo=discord&logoColor=white)](https://sincord.org/discord)
-
 Sincord is a fork of [Vencord](https://github.com/Vendicated/Vencord), with over 300+ plugins.
 
-You can join our [Discord server](https://sincord.org/discord) for commits, changes, chatting, or even support.
 
 ### Included Plugins
 
@@ -28,7 +23,6 @@ Linux
 
 - [GUI](https://github.com/Sincord/Sinlotl/releases/latest/download/Sinlotl-x11)
 - [CLI](https://github.com/Sincord/Sinlotl/releases/latest/download/SinlotlCli-Linux)
-- [AUR](https://aur.archlinux.org/packages?O=0&K=sincord)
 
 ```shell
 sh -c "$(curl -sS https://raw.githubusercontent.com/Sincord/Sincord/refs/heads/main/misc/install.sh)"

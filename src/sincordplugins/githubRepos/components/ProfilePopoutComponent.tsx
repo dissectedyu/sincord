@@ -6,8 +6,8 @@
 
 import { Paragraph } from "@components/Paragraph";
 import { Span } from "@components/Span";
-import { fetchReposByUserId, fetchReposByUsername, fetchUserInfo, GitHubUserInfo } from "@equicordplugins/githubRepos/githubApi";
-import { GitHubRepo } from "@equicordplugins/githubRepos/types";
+import { fetchReposByUserId, fetchReposByUsername, fetchUserInfo, GitHubUserInfo } from "@sincordplugins/githubRepos/githubApi";
+import { GitHubRepo } from "@sincordplugins/githubRepos/types";
 import { classes } from "@utils/misc";
 import { findCssClassesLazy } from "@webpack";
 import { Clickable, openModal,React, useEffect, UserProfileStore, useState } from "@webpack/common";

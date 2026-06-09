@@ -11,18 +11,16 @@ Our included plugins can be found [here](https://sincord.org/plugins).
 
 Windows
 
-- [GUI](https://github.com/Sincord/Sinlotl/releases/latest/download/Sinlotl.exe)
-- [CLI](https://github.com/Sincord/Sinlotl/releases/latest/download/SinlotlCli.exe)
+- [-](https://github.com/sincord/sincord/releases/download/v1.14.13.1/Sinlotl-windows-amd64.exe)
 
 MacOS
 
-- [X64 GUI](https://github.com/Sincord/Sinlotl/releases/latest/download/Sinlotl-darwin-x64.zip)
-- [ARM64 GUI](https://github.com/Sincord/Sinlotl/releases/latest/download/Sinlotl-darwin-arm64.zip)
+- [-](https://github.com/sincord/sincord/releases/download/v1.14.13.1/Sinlotl-darwin-arm64)
 
 Linux
 
-- [GUI](https://github.com/Sincord/Sinlotl/releases/latest/download/Sinlotl-x11)
-- [CLI](https://github.com/Sincord/Sinlotl/releases/latest/download/SinlotlCli-Linux)
+- [-](https://github.com/sincord/sincord/releases/download/v1.14.13.1/Sinlotl-linux-amd64)
+
 
 ```shell
 sh -c "$(curl -sS https://raw.githubusercontent.com/Sincord/Sincord/refs/heads/main/misc/install.sh)"

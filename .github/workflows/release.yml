@@ -1,11 +1,70 @@
-# Fix fakeProfile modal imports
-sed -i '' 's/^import { ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalRoot, openModal } from "@utils\/modal";/import { ModalCloseButton as _ModalCloseButton, ModalContent as _ModalContent, ModalFooter as _ModalFooter, ModalHeader as _ModalHeader, ModalRoot as _ModalRoot, openModal } from "@utils\/modal";\nconst ModalRoot = _ModalRoot as any;\nconst ModalHeader = _ModalHeader as any;\nconst ModalContent = _ModalContent as any;\nconst ModalFooter = _ModalFooter as any;\nconst ModalCloseButton = _ModalCloseButton as any;/' src/sincordplugins/fakeProfile/index.tsx
+name: Build & Release
 
-# Add the workflow file
-git add .github/workflows/release.yml src/sincordplugins/fakeProfile/index.tsx
-git commit -m "add installer release workflow, fix modal types"
-git push origin main
+on:
+  push:
+    tags: ['v*']
 
-# Tag to trigger it
-git tag v1.0.2
-git push origin v1.0.2
+jobs:
+  build:
+    strategy:
+      matrix:
+        include:
+          - os: windows-latest
+            output: Sinlotl-windows-amd64.exe
+            goos: windows
+            goarch: amd64
+          - os: macos-latest
+            output: Sinlotl-darwin-arm64
+            goos: darwin
+            goarch: arm64
+          - os: macos-13
+            output: Sinlotl-darwin-amd64
+            goos: darwin
+            goarch: amd64
+          - os: ubuntu-latest
+            output: Sinlotl-linux-amd64
+            goos: linux
+            goarch: amd64
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version: '1.22'
+
+      - name: Install Linux deps
+        if: matrix.os == 'ubuntu-latest'
+        run: sudo apt-get install -y libgl1-mesa-dev xorg-dev
+
+      - name: Build installer
+        working-directory: installer
+        env:
+          GOOS: ${{ matrix.goos }}
+          GOARCH: ${{ matrix.goarch }}
+        run: go build -ldflags="-s -w" -o ${{ matrix.output }} .
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.output }}
+          path: installer/${{ matrix.output }}
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+          merge-multiple: true
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: artifacts/*
+          generate_release_notes: true

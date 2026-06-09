@@ -5,7 +5,29 @@ on:
     tags: ['v*']
 
 jobs:
-  build:
+  build-sincord:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v3
+        with:
+          version: 9
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: desktop.asar
+          path: dist/desktop.asar
+
+  build-installer:
     strategy:
       fail-fast: false
       matrix:
@@ -31,9 +53,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-        with:
-          submodules: recursive
-          token: ${{ secrets.GITHUB_TOKEN }}
 
       - uses: actions/setup-go@v5
         with:
@@ -51,14 +70,13 @@ jobs:
           GOARCH: ${{ matrix.goarch }}
         run: go build -ldflags="-s -w" -o ${{ matrix.output }} .
 
-      - name: Upload artifact
-        uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.output }}
           path: installer/${{ matrix.output }}
 
   release:
-    needs: build
+    needs: [build-sincord, build-installer]
     runs-on: ubuntu-latest
     permissions:
       contents: write

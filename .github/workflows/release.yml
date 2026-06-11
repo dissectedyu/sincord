@@ -64,11 +64,13 @@ jobs:
 
       - name: Install Linux deps
         if: matrix.goos == 'linux'
-        run: sudo apt-get install -y libgl1-mesa-dev xorg-dev
+        run: sudo apt-get install -y libgl1-mesa-dev xorg-dev pkg-config
 
       - name: Install Windows deps (MinGW)
         if: matrix.goos == 'windows'
-        run: choco install mingw --no-progress -y
+        uses: egor-tensin/setup-mingw@v2
+        with:
+          platform: x64
 
       - name: Build installer
         working-directory: installer
@@ -85,6 +87,7 @@ jobs:
 
   release:
     needs: [build-sincord, build-installer]
+    if: always() && needs.build-sincord.result == 'success'
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -97,5 +100,7 @@ jobs:
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
+          name: Latest Release
           files: artifacts/*
           generate_release_notes: true
+          make_latest: true

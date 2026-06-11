@@ -5,11 +5,10 @@
  */
 
 import { definePluginSettings } from "@api/Settings";
-import { BackupRestoreIcon, CloudIcon, LogIcon, MainSettingsIcon, PaintbrushIcon, PatchHelperIcon, PluginsIcon, UpdaterIcon } from "@components/Icons";
+import { BackupRestoreIcon, LogIcon, MainSettingsIcon, PaintbrushIcon, PatchHelperIcon, PluginsIcon, UpdaterIcon } from "@components/Icons";
 import {
     BackupAndRestoreTab,
     ChangelogTab,
-    CloudTab,
     PatchHelperTab,
     PluginsTab,
     ThemesTab,
@@ -222,14 +221,7 @@ export default definePlugin({
                 Component: ChangelogTab,
                 Icon: LogIcon,
             }),
-            buildEntry({
-                key: "sincord_cloud",
-                title: "Cloud",
-                panelTitle: "Sincord Cloud",
-                Component: CloudTab,
-                Icon: CloudIcon
-            }),
-            buildEntry({
+buildEntry({
                 key: "sincord_backup_restore",
                 title: "Backup & Restore",
                 Component: BackupAndRestoreTab,

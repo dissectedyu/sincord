@@ -221,7 +221,7 @@ export default definePlugin({
                 Component: ChangelogTab,
                 Icon: LogIcon,
             }),
-buildEntry({
+            buildEntry({
                 key: "sincord_backup_restore",
                 title: "Backup & Restore",
                 Component: BackupAndRestoreTab,

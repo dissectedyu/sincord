@@ -63,15 +63,19 @@ jobs:
           cache-dependency-path: installer/go.sum
 
       - name: Install Linux deps
-        if: matrix.os == 'ubuntu-latest'
+        if: matrix.goos == 'linux'
         run: sudo apt-get install -y libgl1-mesa-dev xorg-dev
+
+      - name: Install Windows deps (MinGW)
+        if: matrix.goos == 'windows'
+        run: choco install mingw --no-progress -y
 
       - name: Build installer
         working-directory: installer
         env:
           GOOS: ${{ matrix.goos }}
           GOARCH: ${{ matrix.goarch }}
-          CGO_ENABLED: ${{ matrix.goos == 'linux' && '1' || '0' }}
+          CGO_ENABLED: '1'
         run: go build -trimpath -ldflags="-s -w" -o ${{ matrix.output }} .
 
       - uses: actions/upload-artifact@v4

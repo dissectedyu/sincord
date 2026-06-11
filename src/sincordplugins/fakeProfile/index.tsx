@@ -335,11 +335,11 @@ function ImageUpload({ label, value, onChange }: { label: string; value: string;
 function Toggle({ label, checked, onChange, sublabel }: { label: string; checked: boolean; onChange: (v: boolean) => void; sublabel?: string; }) {
     return (<div className="cp-toggle-row" onClick={() => onChange(!checked)}>
         <div className="cp-toggle-text"><span className="cp-toggle-label">{label}</span>{sublabel && <span className="cp-toggle-sub">{sublabel}</span>}</div>
-        <div className={`cp-toggle ${checked ? "cp-toggle--on" : ""}`}><div className="cp-toggle-thumb" /></div>
+        <div className={`cp-toggle ${checked ? "cp-toggle-on" : ""}`}><div className="cp-toggle-thumb" /></div>
     </div>);
 }
 function BadgeBtn({ label, icon, active, onClick }: { label: string; icon?: string; active: boolean; onClick: () => void; }) {
-    return (<button onClick={onClick} className={`cp-badge ${active ? "cp-badge--on" : ""}`} style={{ display: "flex", alignItems: "center", gap: 5 }}>
+    return (<button onClick={onClick} className={`cp-badge ${active ? "cp-badge-on" : ""}`} style={{ display: "flex", alignItems: "center", gap: 5 }}>
         {icon && <img src={icon} alt="" style={{ width: 16, height: 16, objectFit: "contain", flexShrink: 0 }} />}<span>{label}</span>
     </button>);
 }
@@ -472,9 +472,9 @@ function CustomProfileModal({ rootProps }: { rootProps: any; }) {
             <div className="cp-divider" />
             <div className="cp-section-label">Avatar decoration</div>
             <div className="cp-badges" style={{ flexWrap: "wrap", gap: 6 }}>
-                <button onClick={() => set("decorationAsset", undefined)} className={`cp-badge ${!data.decorationAsset ? "cp-badge--on" : ""}`} style={{ minWidth: 60 }}>None</button>
+                <button onClick={() => set("decorationAsset", undefined)} className={`cp-badge ${!data.decorationAsset ? "cp-badge-on" : ""}`} style={{ minWidth: 60 }}>None</button>
                 {AVATAR_DECORATIONS.map(dec => (
-                    <button key={dec.id} onClick={() => set("decorationAsset", data.decorationAsset === dec.id ? undefined : dec.id)} className={`cp-badge ${data.decorationAsset === dec.id ? "cp-badge--on" : ""}`} title={dec.label} style={{ padding: 3, lineHeight: 0, width: 52, height: 52, borderRadius: 6 }}>
+                    <button key={dec.id} onClick={() => set("decorationAsset", data.decorationAsset === dec.id ? undefined : dec.id)} className={`cp-badge ${data.decorationAsset === dec.id ? "cp-badge-on" : ""}`} title={dec.label} style={{ padding: 3, lineHeight: 0, width: 52, height: 52, borderRadius: 6 }}>
                         <img src={getDecorationUrl(dec.id)} alt={dec.label} style={{ width: 46, height: 46, objectFit: "contain", display: "block" }} />
                     </button>
                 ))}

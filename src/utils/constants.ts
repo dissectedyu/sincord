@@ -781,7 +781,7 @@ export const SincordDevs = Object.freeze({
         id: 921403577539387454n
     },
     Drag: {
-        name: "dragalt_",
+        name: "repost29182",
         id: 1189903210564038697n
     },
     bhop: {

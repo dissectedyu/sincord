@@ -1,7 +1,7 @@
 {
     "name": "sincord",
     "private": "true",
-    "version": "1.14.13.1",
+    "version": "1.14.13.4",
     "description": "The better Discord client mod",
     "homepage": "https://github.com/Sincord/Sincord#readme",
     "bugs": {

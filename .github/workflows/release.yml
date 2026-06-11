@@ -9,17 +9,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
-      - uses: pnpm/action-setup@v3
         with:
-          version: 9
+          fetch-depth: 1
+
+      - uses: pnpm/action-setup@v4
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24
           cache: pnpm
 
-      - run: pnpm install --no-frozen-lockfile
+      - run: pnpm install --frozen-lockfile
       - run: pnpm build
 
       - uses: actions/upload-artifact@v4
@@ -53,10 +53,13 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
 
       - uses: actions/setup-go@v5
         with:
           go-version: '1.22'
+          cache: true
           cache-dependency-path: installer/go.sum
 
       - name: Install Linux deps
@@ -68,7 +71,8 @@ jobs:
         env:
           GOOS: ${{ matrix.goos }}
           GOARCH: ${{ matrix.goarch }}
-        run: go build -ldflags="-s -w" -o ${{ matrix.output }} .
+          CGO_ENABLED: ${{ matrix.goos == 'linux' && '1' || '0' }}
+        run: go build -trimpath -ldflags="-s -w" -o ${{ matrix.output }} .
 
       - uses: actions/upload-artifact@v4
         with:

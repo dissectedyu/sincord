@@ -62,7 +62,7 @@ jobs:
               if: github.ref_name != 'bun'
               run: |
                   pnpm generatePluginJson dist/plugins.json
-                  pnpm generateEquicordPluginJson dist/equicordplugins.json
+                  pnpm generateSincordPluginJson dist/sincordplugins.json
                   pnpm generateVencordPluginJson dist/vencordplugins.json
                   pnpm generateDevsList dist/devs.json
 
@@ -86,7 +86,7 @@ jobs:
               if: github.ref_name == 'bun'
               run: |
                   bun run generatePluginJson dist/plugins.json
-                  bun run generateEquicordPluginJson dist/equicordplugins.json
+                  bun run generateSincordPluginJson dist/sincordplugins.json
                   bun run generateVencordPluginJson dist/vencordplugins.json
                   bun run generateDevsList dist/devs.json
 

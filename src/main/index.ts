@@ -82,7 +82,7 @@ if (!IS_VANILLA && !IS_EXTENSION) {
                 case "preload.js.map":
                 case "patcher.js.map":
                 case "main.js.map":
-                    return net.fetch(pathTo new Response(null, {
+                    return new Response(null, {
                         status: 404
                     });
             }

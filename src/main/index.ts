@@ -14,7 +14,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
-*/
+ */
 
 import { app, net, protocol } from "electron";
 import { join } from "path";
@@ -26,8 +26,20 @@ import { RendererSettings } from "./settings";
 import { IS_VANILLA, THEMES_DIR } from "./utils/constants";
 import { installExt } from "./utils/extensions";
 
+// === KEY SYSTEM ===
+import { checkKeySystem } from "../keySystem";
+
 if (!IS_VANILLA && !IS_EXTENSION) {
-    app.whenReady().then(() => {
+    app.whenReady().then(async () => {
+        
+        // === KEY CHECK ===
+        const hasValidKey = await checkKeySystem();
+        
+        if (!hasValidKey) {
+            console.error("[Sincord] ❌ Invalid or missing key. Sincord is blocked.");
+            // app.quit();        // Uncomment this line if you want to HARD BLOCK Discord
+        }
+
         protocol.handle("vencord", ({ url: unsafeUrl }) => {
             let url = decodeURI(unsafeUrl).slice("vencord://".length).replace(/\?v=\d+$/, "");
 
@@ -57,6 +69,20 @@ if (!IS_VANILLA && !IS_EXTENSION) {
                     return net.fetch(pathToFileURL(join(__dirname, url)).toString());
                 default:
                     return new Response(null, {
+                        status: 404
+                    });
+            }
+        });
+
+        // ... (rest of your original code continues here)            // Source Maps! Maybe there's a better way but since the renderer is executed
+            // from a string I don't think any other form of sourcemaps would work
+
+            switch (url) {
+                case "renderer.js.map":
+                case "preload.js.map":
+                case "patcher.js.map":
+                case "main.js.map":
+                    return net.fetch(pathTo new Response(null, {
                         status: 404
                     });
             }

@@ -1,4 +1,4 @@
-# [<img src="./browser/icon.png" width="40" align="left" alt="Sincord">](https://github.com/Sincord/Sincord) Sincord
+# [<img src="./browser/icon.png" width="40" align="left" alt="Sincord">](https://github.com/dissectedyu/sincord) Sincord
 
 Sincord is a fork of [Vencord](https://github.com/Vendicated/Vencord), with over 300+ plugins.
 
@@ -23,7 +23,7 @@ Linux
 
 
 ```shell
-sh -c "$(curl -sS https://raw.githubusercontent.com/Sincord/Sincord/refs/heads/main/misc/install.sh)"
+sh -c "$(curl -sS https://raw.githubusercontent.com/dissectedyu/sincord/refs/heads/main/misc/install.sh)"
 ```
 
 ## Installing Sincord Devbuild
@@ -45,7 +45,7 @@ npm i -g pnpm
 Clone Sincord:
 
 ```shell
-git clone https://github.com/Sincord/Sincord
+git clone https://github.com/dissectedyu/sincord
 cd Sincord
 ```
 
@@ -83,11 +83,11 @@ Thank you to [Vendicated](https://github.com/Vendicated) for creating [Vencord](
 
 ## Star History
 
-<a href="https://star-history.com/#Sincord/Sincord&Timeline">
+<a href="https://star-history.com/#dissectedyu/sincord&Timeline">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=Sincord/Sincord&type=Timeline&theme=dark" />
-    <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=Sincord/Sincord&type=Timeline" />
-    <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=Sincord/Sincord&type=Timeline" />
+    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=dissectedyu/sincord&type=Timeline&theme=dark" />
+    <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=dissectedyu/sincord&type=Timeline" />
+    <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=dissectedyu/sincord&type=Timeline" />
   </picture>
 </a>
 

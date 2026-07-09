@@ -3,13 +3,13 @@
     "private": "true",
     "version": "1.14.13.4",
     "description": "The better Discord client mod",
-    "homepage": "https://github.com/Sincord/Sincord#readme",
+    "homepage": "https://github.com/dissectedyu/sincord#readme",
     "bugs": {
-        "url": "https://github.com/Sincord/Sincord/issues"
+        "url": "https://github.com/dissectedyu/sincord/issues"
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/Sincord/Sincord.git"
+        "url": "git+https://github.com/dissectedyu/sincord.git"
     },
     "license": "GPL-3.0-or-later",
     "author": "Sincord",
@@ -37,6 +37,7 @@
         "lint:fix": "pnpm lint --fix",
         "lint:intl": "node scripts/lintIntl.mjs",
         "lint:patches": "node scripts/lintPatches.mjs",
+        "generateKeys": "node scripts/generateKeys.mjs",
         "test": "pnpm buildStandalone && pnpm testTsc && pnpm lint:fix && pnpm lint-styles && pnpm lint:intl && pnpm lint:patches && pnpm generatePluginJson",
         "testWeb": "pnpm lint:fix && pnpm buildWeb && pnpm testTsc",
         "testTsc": "tsc --noEmit",
